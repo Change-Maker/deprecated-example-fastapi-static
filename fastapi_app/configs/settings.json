@@ -1,0 +1,17 @@
+{
+  "logger": {
+    "enable": false,
+    "path": "logs/app_{time:YYYY_MM_DD!UTC}.log",
+    "level": "info",
+    "encoding": "utf8",
+    "rotation": "1 day",
+    "retention": "7 days",
+    "compression": "tar.gz",
+    "format": "{time:YYYY-MM-DD HH:mm:ss:SSS!UTC} | {level: <8} | {name}:{function}:{line} - {message}"
+  },
+  "uvicorn": {
+    "host": "0.0.0.0",
+    "port": 3000,
+    "log_level": "info"
+  }
+}
