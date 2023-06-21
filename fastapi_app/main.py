@@ -12,7 +12,7 @@ from routers import home
 from utils import config_util, logger_util
 
 WORKING_DIR = os.path.realpath(os.path.dirname(__file__))
-CLIENT_DIR = os.path.realpath(os.path.join(WORKING_DIR, "..", "client"))
+CLIENT_DIR = os.path.realpath(os.path.join(WORKING_DIR, "../client"))
 
 
 @asynccontextmanager
@@ -51,7 +51,7 @@ async def main():
 if __name__ == "__main__":
     APP = "main:app"
     settings = config_util.get_settings(
-        os.path.join(WORKING_DIR, "configs", "settings.json"),
+        os.path.join(WORKING_DIR, "configs/settings.json"),
     )
     if settings is None:
         sys.exit(1)
