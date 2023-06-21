@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from loguru import logger
 
-from routers import home
+from routers import example, home
 from utils import config_util, logger_util
 
 WORKING_DIR = os.path.realpath(os.path.dirname(__file__))
@@ -27,6 +27,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(home.router)
+app.include_router(example.router)
 
 # Serve static files.
 app.mount(
