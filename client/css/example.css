@@ -19,6 +19,18 @@
   background-color: #fde8d9;
 }
 
+.form-btn {
+  border-width: 2px;
+  bottom: 15px;
+  display: block;
+  font-weight: normal;
+  margin: 0px;
+  padding: 2px 10px;
+  position: absolute;
+  right: 20px;
+  width: fit-content;
+}
+
 .root-title {
   color: #3168ff;
   font-size: 40px;
@@ -33,4 +45,18 @@
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 25px;
+}
+
+.upload-file-form {
+  border: 2px solid black;
+  height: 120px;
+  margin: 20px 0px 0px 20px;
+  position: relative;
+  width: fit-content;
+}
+
+#select-txt-file {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin: 20px 20px 0px 20px;
 }

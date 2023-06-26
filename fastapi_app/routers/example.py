@@ -1,7 +1,8 @@
+# import io
 import os
 
 import aiofiles
-from fastapi import APIRouter
+from fastapi import APIRouter, File, UploadFile
 from fastapi.responses import HTMLResponse, Response
 from pydantic import BaseModel
 
@@ -9,6 +10,7 @@ _WORKING_DIR = os.path.realpath(os.path.dirname(__file__))
 _EXAMPLE_HTML_PATH = os.path.realpath(
     os.path.join(_WORKING_DIR, "../../client/example.html"),
 )
+_STORES_DIR = os.path.realpath(os.path.join(_WORKING_DIR, "../stores"))
 _users = []
 
 router = APIRouter(
@@ -67,3 +69,27 @@ async def add_user(user: User, resp: Response) -> Result:
     else:
         resp.status_code = 409  # Conflict.
         return Result(success=False, msg="User already exists.")
+
+
+@router.post("/txt-file")
+async def receive_txt_file(file: UploadFile = File(..., alias="txtFile")):
+    # # Handle a file without saving it into disk.
+    # buffer = io.BytesIO()
+    # buffer.write(await file.read())
+    # buffer.seek(0)  # Set the stream's position back to the start.
+    # # Handling...
+    # buffer.close()
+
+    out_file_path = os.path.join(_STORES_DIR, file.filename)
+    CHUNK_SIZE = 1024
+
+    # # Load entire file into memory and write to disk.
+    # async with aiofiles.open(out_file_path, "wb") as f:
+    #     await f.write(await file.read())
+
+    # Write files in the chunked manner.
+    async with aiofiles.open(out_file_path, "wb") as f:
+        while chunk := await file.read(CHUNK_SIZE):
+            await f.write(chunk)
+
+    return Result(success=True, msg=None)
