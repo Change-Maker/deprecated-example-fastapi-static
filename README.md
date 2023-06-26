@@ -10,6 +10,10 @@ This is an example for building a FastAPI app and serving a static website on it
 
     This example uses `|` operator on type annotations (PEP 604).
 
+- Python 3.8+
+
+    This example uses `:=` (Walrus) operator on file chunked reading (PEP 572).
+
 
 
 ## 2. Setup Environment
