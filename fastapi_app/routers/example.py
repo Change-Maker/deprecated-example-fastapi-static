@@ -46,8 +46,8 @@ class User(BaseModel):
 
 
 class Result(BaseModel):
-    success: bool
-    msg: str | None
+    success: bool = True
+    msg: str | None = None
 
 
 @router.get("")
@@ -65,7 +65,7 @@ async def get_users() -> list[User]:
 async def add_user(user: User, resp: Response) -> Result:
     if next((u for u in _users if u.name == user.name), None) is None:
         _users.append(user)
-        return Result(success=True, msg=None)
+        return Result()
     else:
         resp.status_code = 409  # Conflict.
         return Result(success=False, msg="User already exists.")
@@ -92,4 +92,4 @@ async def receive_txt_file(file: UploadFile = File(..., alias="txtFile")):
         while chunk := await file.read(CHUNK_SIZE):
             await f.write(chunk)
 
-    return Result(success=True, msg=None)
+    return Result()
