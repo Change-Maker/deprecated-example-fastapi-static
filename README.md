@@ -75,6 +75,20 @@ if settings.logger is not None:
     logger_util.setup_logger(settings.logger, True)
 ```
 
+### 3.4 Docker
+
+To build a Docker image (here I use `example-fastapi-static` as the image name):
+
+```bash
+docker build -t example-fastapi-static .
+```
+
+Run a container (the default port is `3000`):
+
+```bash
+docker run -p 3000:3000 -d example-fastapi-static
+```
+
 ## 4. Troubleshooting
 
 - **Browser doesn't reflect changes made in the files in `client` folder.**
