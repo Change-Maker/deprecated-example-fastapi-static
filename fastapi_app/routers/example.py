@@ -42,7 +42,7 @@ class User(BaseModel):
         # attributes.
         # Without this, `User(name="alfa", age=14, is_verified=True)`
         # will raise an error which says `isVerified` field is required.
-        allow_population_by_field_name = True
+        populate_by_name = True
 
 
 class Result(BaseModel):

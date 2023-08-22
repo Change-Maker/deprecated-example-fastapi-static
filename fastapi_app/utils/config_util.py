@@ -1,35 +1,36 @@
 import os
 
 from loguru import logger
-from pydantic import BaseModel, constr, Required, ValidationError
+from pydantic import BaseModel, constr, ValidationError
 
 
 class LoggerSettings(BaseModel):
-    enable: bool = Required
-    path: str = Required
-    level: constr(to_upper=True) = Required
-    encoding: str = Required
-    rotation: str = Required
-    retention: str = Required
-    compression: str = Required
-    format: str = Required
+    enable: bool
+    path: str
+    level: constr(to_upper=True)
+    encoding: str
+    rotation: str
+    retention: str
+    compression: str
+    format: str
 
 
 class UvicornSettings(BaseModel):
-    host: str = Required
-    port: int = Required
-    log_level: str = Required
+    host: str
+    port: int
+    log_level: str
 
 
 class Settings(BaseModel):
     logger: LoggerSettings | None
-    uvicorn: UvicornSettings = Required
+    uvicorn: UvicornSettings
 
 
 def get_settings(config_path: str) -> Settings | None:
     config_relpath = os.path.relpath(config_path)
     try:
-        return Settings.parse_file(config_path)
+        with open(config_relpath, "r") as f:
+            return Settings.model_validate_json(f.read())
     except ValidationError as validation_err:
         logger.error(
             f"The content of '{config_relpath}' is invalid: {validation_err}")
