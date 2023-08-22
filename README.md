@@ -35,35 +35,40 @@ This is an example for building a FastAPI app and serving a static website on it
 
 ## 3. Usage
 
-Just get into `fastapi_app` folder and run `python main.py`.
+Just get into `src/fastapi_app` folder and run `python main.py`.
 
 ### 3.1 Development mode
 
-To run in development mode, set `MODE` environment variable to `dev` and run app:
+To run in development mode, set `MODE` environment variable to `dev` and run
+app:
 
 ```bash
 MODE="dev" python main.py
 ```
 
-In this mode, it will reload automatically if you save the changes to files in `fastapi_app` folder.
+In this mode, it will reload automatically if you save the changes to files in
+`src/fastapi_app` folder.
 
 ### 3.2 File logger
 
-To enable file logger, change `logger.enable` to `true` in `fastapi_app/configs/settings.json` file.
+To enable file logger, change `logger.enable` to `true` in
+`src/fastapi_app/configs/settings.json` file.
 
-The log files will be put in `fastapi_app/logs` folder. To change the location to place log files,
-change `logger.path` in `fastapi_app/configs/settings.json` file.
+The log files will be put in `src/fastapi_app/logs` folder.
+To change the location to place log files, change `logger.path` in
+`src/fastapi_app/configs/settings.json` file.
 
 ### 3.3 Default console logger
 
-To change the log level of default console logger, set `LOGURU_LEVEL` environment variable, e.g. set
-it to `INFO`:
+To change the log level of default console logger, set `LOGURU_LEVEL`
+environment variable, e.g. set it to `INFO`:
 
 ```bash
 LOGURU_LEVEL="INFO" python main.py
 ```
 
-To disable the default console logger, change the following lines in `fastapi_app/main.py` file:
+To disable the default console logger, change the following lines in
+`src/fastapi_app/main.py` file:
 
 ```py
 if settings.logger is not None:
@@ -76,7 +81,7 @@ if settings.logger is not None:
 
   Browser might cache the content before changes made.
 
-  To disable browser caching, open the developer tools (press the `F12` key generally) and get into **Network** tab
-  then check **Disable cache** checkbox.
+  To disable browser caching, open the developer tools (press the `F12` key
+  generally) and get into **Network** tab then check **Disable cache** checkbox.
 
   Now refresh the website, it should reflect changes.
