@@ -77,7 +77,11 @@ if settings.logger is not None:
 
 ### 3.4 Docker
 
-To build a Docker image (here I use `example-fastapi-static` as the image name):
+The examples below use `example-fastapi-static` as the image name.
+
+#### 3.4.1 Full
+
+To build a Docker image:
 
 ```bash
 docker build -t example-fastapi-static .
@@ -87,6 +91,20 @@ Run a container (the default port is `3000`):
 
 ```bash
 docker run -p 3000:3000 -d example-fastapi-static
+```
+
+#### 3.4.2 Environment Only
+
+To build a Docker image that only contains environment:
+
+```bash
+docker build -t example-fastapi-static:env-only -f Dockerfile.env_only .
+```
+
+Run a container:
+
+```bash
+docker run -p 3000:3000 -v ./src:/ws/src -d example-fastapi-static:env-only
 ```
 
 ## 4. Troubleshooting
