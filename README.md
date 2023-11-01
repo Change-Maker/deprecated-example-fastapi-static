@@ -35,7 +35,10 @@ This is an example for building a FastAPI app and serving a static website on it
 
 ## 3. Usage
 
-Just get into `src/fastapi_app` folder and run `python main.py`.
+It needs to build Tailwind CSS first. See `docs/tailwind_css.md` for more
+information.
+
+Afterwards, get into `src/fastapi_app` folder and run `python main.py`.
 
 ### 3.1 Development mode
 
