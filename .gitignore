@@ -3,3 +3,5 @@
 logs/
 __pycache__/
 stores/
+node_modules/
+src/client/css/tailwind.css
