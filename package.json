@@ -1,0 +1,26 @@
+{
+  "name": "example-fastapi-static",
+  "version": "1.0.0",
+  "description": "This is an example for building a FastAPI app and serving a static website on it.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Change-Maker/example-fastapi-static.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Change-Maker/example-fastapi-static/issues"
+  },
+  "homepage": "https://github.com/Change-Maker/example-fastapi-static#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
+  }
+}
