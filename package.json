@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Change-Maker/example-fastapi-static#readme",
   "devDependencies": {
+    "prettier-plugin-tailwindcss": "^0.5.6",
     "tailwindcss": "^3.3.5"
   }
 }
