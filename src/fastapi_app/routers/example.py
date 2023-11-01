@@ -10,7 +10,6 @@ _WORKING_DIR = os.path.realpath(os.path.dirname(__file__))
 _EXAMPLE_HTML_PATH = os.path.realpath(
     os.path.join(_WORKING_DIR, "../../client/example.html"),
 )
-_STORES_DIR = os.path.realpath(os.path.join(_WORKING_DIR, "../stores"))
 _users = []
 
 router = APIRouter(
@@ -80,7 +79,7 @@ async def receive_txt_file(file: UploadFile = File(..., alias="txtFile")):
     # # Handling...
     # buffer.close()
 
-    out_file_path = os.path.join(_STORES_DIR, file.filename)
+    out_file_path = os.path.join(_WORKING_DIR, file.filename)
     CHUNK_SIZE = 1024
 
     # # Load entire file into memory and write to disk.
