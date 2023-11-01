@@ -4,7 +4,9 @@
 
 Install extension: [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
-## 2. CDN
+## 2. Usage
+
+### 1. CDN
 
 To activate Tailwind CSS IntelliSense, we have to create a file named
 `tailwind.config.{js,cjs,mjs,ts}` in our workspace.
@@ -144,7 +146,7 @@ But there will be a warning in web browser console:
 cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI
 ```
 
-## 3. Tailwind CLI
+### 2. Tailwind CLI
 
 1. Install `tailwindcss` as a development dependency.
 
@@ -210,4 +212,83 @@ cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in pro
         <!-- ... -->
         <link href="./css/tailwind.css" rel="stylesheet">
         <!-- ... -->
+    ```
+
+## 3. Prettier
+
+1. Install VS Code extension: [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+2. Setup VS Code default formatter for HTML files.
+
+    ```json
+    // settings.json
+    {
+      "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+      },
+    }
+    ```
+
+3. Install Prettier plugin.
+
+    ```bash
+    npm install -D prettier-plugin-tailwindcss
+    ```
+
+    Since version 10.0.0 of **prettier-vscode** includes prettier 3.0.0, it is
+    no need to install prettier by npm.
+
+4. Create `prettier.config.js` file.
+
+    ```js
+    module.exports = {
+      plugins: ['prettier-plugin-tailwindcss'],
+    };
+    ```
+
+5. Run Prettier.
+
+    Press `Ctrl` + `Shift` + `P` to open **Command Palette** and run "Format
+    Document".
+
+    The `src/client/index.html` file, for example, will be changed from this:
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Home</title>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">  <!-- This fix "Failed to load resource: favicon.ico" -->
+        <link href="./css/tailwind.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="js/index.js"></script>
+      </head>
+      <body>
+        <div class="text-5xl font-bold m-5 text-my-grey">Home Page</div>
+      </body>
+    </html>
+
+
+    ```
+
+    To this:
+
+    ```html
+    <!doctype html>
+    <html>
+      <head>
+        <title>Home</title>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#" />
+        <!-- This fix "Failed to load resource: favicon.ico" -->
+        <link href="./css/tailwind.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="js/index.js"></script>
+      </head>
+      <body>
+        <div class="m-5 text-5xl font-bold text-my-grey">Home Page</div>
+      </body>
+    </html>
+
     ```
