@@ -6,7 +6,8 @@ Install extension: [Tailwind CSS IntelliSense](https://marketplace.visualstudio.
 
 ## 2. CDN
 
-To activate Tailwind CSS IntelliSense, we have to create a file named `tailwind.config.{js,cjs,mjs,ts}` in our workspace.
+To activate Tailwind CSS IntelliSense, we have to create a file named
+`tailwind.config.{js,cjs,mjs,ts}` in our workspace.
 
 I create `tailwind.config.js` in this example:
 
