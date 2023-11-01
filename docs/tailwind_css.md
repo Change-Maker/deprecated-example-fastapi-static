@@ -142,3 +142,71 @@ But there will be a warning in web browser console:
 ```text
 cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI
 ```
+
+## 3. Tailwind CLI
+
+1. Install `tailwindcss` as a development dependency.
+
+    ```bash
+    npm install -D tailwindcss
+    ```
+
+2. Initialize Tailwind CSS.
+
+    ```bash
+    npx tailwindcss init
+    ```
+
+    Afterward, there will be a `tailwind.config.js` file in our project.
+
+3. Configure paths.
+
+    ```js
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: ['./src/client/**/*.{html,js}'],
+      theme: {
+        extend: {},
+      },
+      plugins: [],
+    };
+    ```
+
+4. Add the Tailwind directives to `tailwind_input.css`.
+
+    ```css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    ```
+
+5. Start Tailwind CLI build process.
+
+    ```bash
+    npx tailwindcss \
+      -i ./tailwind_input.css \
+      -o ./src/client/css/tailwind.css
+    ```
+
+    This will output `tailwind.css` into `src/client/css/` folder.
+
+    To make it update Tailwind CSS output file after change
+    `tailwind_input.css` file:
+
+    ```bash
+    npx tailwindcss \
+      -i ./tailwind_input.css \
+      -o ./src/client/css/tailwind.css \
+      --watch
+    ```
+
+6. Start using Tailwind in your HTML.
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <!-- ... -->
+        <link href="./css/tailwind.css" rel="stylesheet">
+        <!-- ... -->
+    ```
