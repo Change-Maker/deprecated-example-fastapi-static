@@ -1,4 +1,4 @@
-# Example FastAPI Static
+# Example FastAPI Static (Deprecated)
 
 This is an example for building a FastAPI app and serving a static website on it.
 
